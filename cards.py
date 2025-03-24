@@ -1,0 +1,96 @@
+import pygame
+import random
+import os
+
+card_images_folder = "card_images"
+
+cards = [
+    { "name": "Ace of Cups", "image": "ace_of_cups.jpeg", "meaning": "New emotional beginnings, love, and creativity." },
+    { "name": "Two of Cups", "image": "two_of_cups.jpeg", "meaning": "Union, partnership, and mutual attraction." },
+    { "name": "Three of Cups", "image": "three_of_cups.jpeg", "meaning": "Celebration, friendship, and joy." },
+    { "name": "Four of Cups", "image": "four_of_cups.jpeg", "meaning": "Contemplation, apathy, and emotional dissatisfaction." },
+    { "name": "Five of Cups", "image": "five_of_cups.jpeg", "meaning": "Regret, focusing on the negative, and emotional loss." },
+    { "name": "Six of Cups", "image": "six_of_cups.jpeg", "meaning": "Nostalgia, past memories, and childhood." },
+    { "name": "Seven of Cups", "image": "seven_of_cups.jpeg", "meaning": "Choices, illusions, and daydreaming." },
+    { "name": "Eight of Cups", "image": "eight_of_cups.jpeg", "meaning": "Walking away, leaving something behind, emotional growth." },
+    { "name": "Nine of Cups", "image": "nine_of_cups.jpeg", "meaning": "Contentment, satisfaction, and emotional fulfillment." },
+    { "name": "Ten of Cups", "image": "ten_of_cups.jpeg", "meaning": "Happiness, harmony, and family unity." },
+    { "name": "Page of Cups", "image": "page_of_cups.jpeg", "meaning": "Creative opportunities, intuition, and emotional messages." },
+    { "name": "Knight of Cups", "image": "knight_of_cups.jpeg", "meaning": "Romance, charm, and following your heart." },
+    { "name": "Queen of Cups", "image": "queen_of_cups.jpeg", "meaning": "Compassion, emotional balance, and nurturing." },
+    { "name": "King of Cups", "image": "king_of_cups.jpeg", "meaning": "Emotional control, wisdom, and diplomacy." },
+    { "name": "Ace of Pentacles", "image": "ace_of_pentacles.jpeg", "meaning": "New beginnings in financial or material pursuits." },
+    { "name": "Two of Pentacles", "image": "two_of_pentacles.jpeg", "meaning": "Balance, adaptability, and juggling responsibilities." },
+    { "name": "Three of Pentacles", "image": "three_of_pentacles.jpeg", "meaning": "Teamwork, collaboration, and skill development." },
+    { "name": "Four of Pentacles", "image": "four_of_pentacles.jpeg", "meaning": "Security, stability, and holding on too tightly." },
+    { "name": "Five of Pentacles", "image": "five_of_pentacles.jpeg", "meaning": "Loss, financial hardship, and feeling left out." },
+    { "name": "Six of Pentacles", "image": "six_of_pentacles.jpeg", "meaning": "Generosity, giving and receiving, and charity." },
+    { "name": "Seven of Pentacles", "image": "seven_of_pentacles.jpeg", "meaning": "Patience, assessment, and long-term planning." },
+    { "name": "Eight of Pentacles", "image": "eight_of_pentacles.jpeg", "meaning": "Hard work, mastery, and dedication to a craft." },
+    { "name": "Nine of Pentacles", "image": "nine_of_pentacles.jpeg", "meaning": "Independence, luxury, and financial success." },
+    { "name": "Ten of Pentacles", "image": "ten_of_pentacles.jpeg", "meaning": "Wealth, family legacy, and long-term security." },
+    { "name": "Page of Pentacles", "image": "page_of_pentacles.jpeg", "meaning": "New opportunities, ambition, and learning." },
+    { "name": "Knight of Pentacles", "image": "knight_of_pentacles.jpeg", "meaning": "Hard work, loyalty, and a methodical approach." },
+    { "name": "Queen of Pentacles", "image": "queen_of_pentacles.jpeg", "meaning": "Nurturing, practicality, and abundance." },
+    { "name": "King of Pentacles", "image": "king_of_pentacles.jpeg", "meaning": "Financial stability, leadership, and success." },
+    { "name": "Ace of Swords", "image": "ace_of_swords.jpeg", "meaning": "Clarity, truth, and mental breakthroughs." },
+    { "name": "Two of Swords", "image": "two_of_swords.jpeg", "meaning": "Difficult choices, indecision, and blocked emotions." },
+    { "name": "Three of Swords", "image": "three_of_swords.jpeg", "meaning": "Heartbreak, emotional pain, and sorrow." },
+    { "name": "Four of Swords", "image": "four_of_swords.jpeg", "meaning": "Rest, recovery, and contemplation." },
+    { "name": "Five of Swords", "image": "five_of_swords.jpeg", "meaning": "Conflict, defeat, and winning at a cost." },
+    { "name": "Six of Swords", "image": "six_of_swords.jpeg", "meaning": "Transition, moving on, and leaving behind struggles." },
+    { "name": "Seven of Swords", "image": "seven_of_swords.jpeg", "meaning": "Deception, secrecy, and betrayal." },
+    { "name": "Eight of Swords", "image": "eight_of_swords.jpeg", "meaning": "Feeling trapped, restriction, and mental limitations." },
+    { "name": "Nine of Swords", "image": "nine_of_swords.jpeg", "meaning": "Anxiety, fear, and sleepless nights." },
+    { "name": "Ten of Swords", "image": "ten_of_swords.jpeg", "meaning": "Betrayal, painful endings, and hitting rock bottom." },
+    { "name": "Page of Swords", "image": "page_of_swords.jpeg", "meaning": "Curiosity, new ideas, and mental agility." },
+    { "name": "Knight of Swords", "image": "knight_of_swords.jpeg", "meaning": "Ambition, action, and pursuing goals with urgency." },
+    { "name": "Queen of Swords", "image": "queen_of_swords.jpeg", "meaning": "Intellectual clarity, independence, and truth." },
+    { "name": "King of Swords", "image": "king_of_swords.jpeg", "meaning": "Mental strength, leadership, and authority." },
+    { "name": "Ace of Wands", "image": "ace_of_wands.jpeg", "meaning": "Inspiration, new beginnings, and creative energy." },
+    { "name": "Two of Wands", "image": "two_of_wands.jpeg", "meaning": "Planning, decisions, and looking toward the future." },
+    { "name": "Three of Wands", "image": "three_of_wands.jpeg", "meaning": "Expansion, foresight, and waiting for results." },
+    { "name": "Four of Wands", "image": "four_of_wands.jpeg", "meaning": "Celebration, stability, and homecoming." },
+    { "name": "Five of Wands", "image": "five_of_wands.jpeg", "meaning": "Competition, conflict, and differing opinions." },
+    { "name": "Six of Wands", "image": "six_of_wands.jpeg", "meaning": "Victory, recognition, and success." },
+    { "name": "Seven of Wands", "image": "seven_of_wands.jpeg", "meaning": "Perseverance, standing your ground, and defense." },
+    { "name": "Eight of Wands", "image": "eight_of_wands.jpeg", "meaning": "Swift action, progress, and rapid developments." },
+    { "name": "Nine of Wands", "image": "nine_of_wands.jpeg", "meaning": "Resilience, persistence, and guarding against adversity." },
+    { "name": "Ten of Wands", "image": "ten_of_wands.jpeg", "meaning": "Burden, responsibility, and feeling overwhelmed." },
+    { "name": "Page of Wands", "image": "page_of_wands.jpeg", "meaning": "Enthusiasm, exploration, and new creative ventures." },
+    { "name": "Knight of Wands", "image": "knight_of_wands.jpeg", "meaning": "Action, adventure, and pursuing passions." },
+    { "name": "Queen of Wands", "image": "queen_of_wands.jpeg", "meaning": "Confidence, leadership, and personal power." },
+    { "name": "King of Wands", "image": "king_of_wands.jpeg", "meaning": "Vision, entrepreneurship, and inspiring leadership." },
+    { "name": "The Fool", "image": "the_fool.jpeg", "meaning": "New beginnings, spontaneity, and taking a leap of faith." },
+    { "name": "The Magician", "image": "the_magician.jpeg", "meaning": "Manifestation, skill, and the power to create." },
+    { "name": "The High Priestess", "image": "the_high_priestess.jpeg", "meaning": "Intuition, mystery, and the subconscious mind." },
+    { "name": "The Empress", "image": "the_empress.jpeg", "meaning": "Fertility, nurturing, and abundance." },
+    { "name": "The Emperor", "image": "the_emperor.jpeg", "meaning": "Authority, structure, and stability." },
+    { "name": "The Hierophant", "image": "the_hierophant.jpeg", "meaning": "Tradition, guidance, and spiritual teachings." },
+    { "name": "The Lovers", "image": "the_lovers.jpeg", "meaning": "Love, relationships, and choices." },
+    { "name": "The Chariot", "image": "the_chariot.jpeg", "meaning": "Victory through determination, willpower, and focus." },
+    { "name": "Strength", "image": "strength.jpeg", "meaning": "Courage, inner strength, and self-confidence." },
+    { "name": "The Hermit", "image": "the_hermit.jpeg", "meaning": "Introspection, solitude, and seeking inner wisdom." },
+    { "name": "Wheel of Fortune", "image": "wheel_of_fortune.jpeg", "meaning": "Luck, destiny, and the cycles of life." },
+    { "name": "Justice", "image": "justice.jpeg", "meaning": "Fairness, balance, and legal matters." },
+    { "name": "The Hanged Man", "image": "the_hanged_man.jpeg", "meaning": "Sacrifice, letting go, and seeing things from a different perspective." },
+    { "name": "Death", "image": "death.jpeg", "meaning": "Transformation, endings, and new beginnings." },
+    { "name": "Temperance", "image": "temperance.jpeg", "meaning": "Balance, moderation, and harmony." },
+    { "name": "The Devil", "image": "the_devil.jpeg", "meaning": "Temptation, addiction, and materialism." },
+    { "name": "The Tower", "image": "the_tower.jpeg", "meaning": "Sudden change, upheaval, and destruction." },
+    { "name": "The Star", "image": "the_star.jpeg", "meaning": "Hope, inspiration, and healing." },
+    { "name": "The Moon", "image": "the_moon.jpeg", "meaning": "Illusion, intuition, and the subconscious mind." },
+    { "name": "The Sun", "image": "the_sun.jpeg", "meaning": "Happiness, success, and vitality." },
+    { "name": "Judgement", "image": "judgement.jpeg", "meaning": "Reflection, rebirth, and making final decisions." },
+    { "name": "The World", "image": "the_world.jpeg", "meaning": "Completion, fulfillment, and global awareness." },
+]
+
+
+def draw_card():
+    card = random.choice(cards)
+    card_image_path = os.path.join(card_images_folder, card["image"])
+    card_image = pygame.image.load(card_image_path)
+    card_title = card["name"]
+    meaning_text = card["meaning"]
+    card_image = pygame.transform.scale(card_image, (450, 450))  # Adjust for portrait
+    return card_image, card_title, meaning_text
