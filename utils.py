@@ -21,16 +21,15 @@ def wrap_text(text, font, max_width):
     return lines
 
 def create_particles(crystal_ball, crystal_x, crystal_y):
-    # Mist settings
     mist_particles = []
     for _ in range(30):  # Create 30 mist particles
         mist_particles.append({
-            "x": random.randint(crystal_x, crystal_x + crystal_ball.get_width() + 250),
-            "y": random.randint(crystal_y, crystal_y + crystal_ball.get_height() + 250),
-            "alpha": random.randint(50, 150),  # Random opacity
-            "radius": random.randint(20, 200),  # Random size for the mist particles
-            "speed": random.uniform(0.01, 0.1),  # Speed at which it moves
-            "direction": random.uniform(0, 2 * math.pi)  # Random direction (angle in radians)
+            "x": random.randint(crystal_x - 200, crystal_x + crystal_ball.get_width() + 400),
+            "y": random.randint(crystal_y - 200, crystal_y + crystal_ball.get_height() + 400),
+            "alpha": random.randint(50, 120),  # Optional: more ethereal
+            "radius": random.randint(30, 120),  # Medium-large size
+            "speed": random.uniform(0.5, 2.0),  # 💨 Faster mist
+            "direction": random.uniform(0, 2 * math.pi)  # Drift direction
         })
     return mist_particles
 
