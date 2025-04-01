@@ -21,7 +21,7 @@ dark_overlay.fill((0, 0, 0))  # Black
 
 # Load and scale crystal ball image
 crystal_ball = pygame.image.load("crystal_ball.png")
-crystal_ball = pygame.transform.scale(crystal_ball, (1200, 1200))  # Adjust for portrait
+crystal_ball = pygame.transform.scale(crystal_ball, (1500, 1500))  # Adjust for portrait
 
 # Center the crystal ball in portrait mode
 crystal_x = (screen.get_width() - crystal_ball.get_width()) // 2
