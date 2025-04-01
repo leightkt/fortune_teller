@@ -5,14 +5,14 @@ from fortune import tell_fortune, draw_card
 
 # Initialize pygame
 pygame.init()
-screen_width = 720
-screen_height = 900
+screen_width = 2160
+screen_height = 3840
 screen = pygame.display.set_mode((screen_width, screen_height))  # Portrait mode
 running = True
 
 # Load and scale background image
 bg = pygame.image.load("background.jpeg")
-bg = pygame.transform.scale(bg, (720, 900))
+bg = pygame.transform.scale(bg, (2160, 3840))
 
 # Create a semi-transparent black surface
 dark_overlay = pygame.Surface((screen_width, screen_height))
