@@ -21,7 +21,7 @@ dark_overlay.fill((0, 0, 0))  # Black
 
 # Load and scale crystal ball image
 crystal_ball = pygame.image.load("crystal_ball.png")
-crystal_ball = pygame.transform.scale(crystal_ball, (450, 450))  # Adjust for portrait
+crystal_ball = pygame.transform.scale(crystal_ball, (900, 900))  # Adjust for portrait
 
 # Center the crystal ball in portrait mode
 crystal_x = (screen.get_width() - crystal_ball.get_width()) // 2
@@ -29,8 +29,8 @@ crystal_y = (screen.get_height() - crystal_ball.get_height()) // 2
 
 # Load font and render text
 pygame.font.init()
-font = pygame.font.SysFont("papyrus", 64)  # Mystical font
-small_font = pygame.font.SysFont("papyrus", 32)  # Smaller font for card meanings
+font = pygame.font.SysFont("papyrus", 128)  # Mystical font
+small_font = pygame.font.SysFont("papyrus", 64)  # Smaller font for card meanings
 title_text = font.render("Hello Stranger", True, (255, 215, 0))  # Gold text
 subtitle_text = font.render("Dare to have your fortune told?", True, (255, 215, 0))
 
