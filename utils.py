@@ -28,7 +28,7 @@ def create_particles(crystal_ball, crystal_x, crystal_y):
             "x": random.randint(crystal_x, crystal_x + crystal_ball.get_width()),
             "y": random.randint(crystal_y, crystal_y + crystal_ball.get_height()),
             "alpha": random.randint(50, 150),  # Random opacity
-            "radius": random.randint(5, 40),  # Random size for the mist particles
+            "radius": random.randint(20, 200),  # Random size for the mist particles
             "speed": random.uniform(0.01, 0.1),  # Speed at which it moves
             "direction": random.uniform(0, 2 * math.pi)  # Random direction (angle in radians)
         })
