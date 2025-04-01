@@ -32,12 +32,14 @@ pygame.font.init()
 font = pygame.font.SysFont("papyrus", 256)  # Mystical font
 small_font = pygame.font.SysFont("papyrus", 128)  # Smaller font for card meanings
 title_text = font.render("Hello Stranger", True, (255, 215, 0))  # Gold text
-subtitle_text = font.render("Dare to have your fortune told?", True, (255, 215, 0))
+subtitle_text_line_1 = font.render("Do you dare", True, (255, 215, 0))
+subtitle_text_line_2 = font.render("to have your fortune told?", True, (255, 215, 0))
 
 # Position the text for portrait mode
 text_x = (screen.get_width() - title_text.get_width()) // 2
 text_y = 100  # Higher in portrait mode
-subtitle_text_x = (screen.get_width() - subtitle_text.get_width()) // 2
+subtitle_text_line_1_x = (screen.get_width() - subtitle_text_line_1.get_width()) // 2
+subtitle_text_line_2_x = (screen.get_width() - subtitle_text_line_2.get_width()) // 2
 subtitle_text_y = screen.get_height() - 300  # Near the bottom
 
 mist_particles = create_particles(crystal_ball, crystal_x, crystal_y)
@@ -69,7 +71,8 @@ while running:
     draw_mist(mist_particles, screen, pygame)
 
     # Draw subtitle at the bottom
-    screen.blit(subtitle_text, (subtitle_text_x, subtitle_text_y))
+    screen.blit(subtitle_text_line_1, (subtitle_text_line_1_x, subtitle_text_y))
+    screen.blit(subtitle_text_line_2, (subtitle_text_line_2_x, subtitle_text_y + 150))
 
     # Check if the spacebar is pressed to show the fortune screen
     keys = pygame.key.get_pressed()
