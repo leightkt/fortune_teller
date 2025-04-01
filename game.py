@@ -32,8 +32,8 @@ pygame.font.init()
 font = pygame.font.SysFont("papyrus", 256)  # Mystical font
 small_font = pygame.font.SysFont("papyrus", 128)  # Smaller font for card meanings
 title_text = font.render("Hello Stranger", True, (255, 215, 0))  # Gold text
-subtitle_text_line_1 = font.render("Do you dare", True, (255, 215, 0))
-subtitle_text_line_2 = font.render("to have your fortune told?", True, (255, 215, 0))
+subtitle_text_line_1 = font.render("Do you dare to", True, (255, 215, 0))
+subtitle_text_line_2 = font.render("have your fortune told?", True, (255, 215, 0))
 
 # Position the text for portrait mode
 text_x = (screen.get_width() - title_text.get_width()) // 2
