@@ -25,8 +25,8 @@ def create_particles(crystal_ball, crystal_x, crystal_y):
     mist_particles = []
     for _ in range(30):  # Create 30 mist particles
         mist_particles.append({
-            "x": random.randint(crystal_x, crystal_x + crystal_ball.get_width() + 500),
-            "y": random.randint(crystal_y, crystal_y + crystal_ball.get_height() + 500),
+            "x": random.randint(crystal_x, crystal_x + crystal_ball.get_width() + 250),
+            "y": random.randint(crystal_y, crystal_y + crystal_ball.get_height() + 250),
             "alpha": random.randint(50, 150),  # Random opacity
             "radius": random.randint(20, 200),  # Random size for the mist particles
             "speed": random.uniform(0.01, 0.1),  # Speed at which it moves
