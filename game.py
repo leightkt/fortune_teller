@@ -95,6 +95,7 @@ while running:
         # Check if 10 seconds have passed
         current_time = pygame.time.get_ticks()
         if current_time - fortune_start_time > fortune_duration:
+            print('done telling fortune and restarting')
             fortune_start_time = None  # Reset and go back to the main screen
 
     # Update the display
