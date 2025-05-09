@@ -1,4 +1,5 @@
 import pygame
+import time
 import RPi.GPIO as GPIO
 
 from utils import create_particles, draw_mist
@@ -6,8 +7,10 @@ from fortune import tell_fortune, draw_card
 
 # Setup for GPIO button
 BUTTON_GPIO = 17
+LED_GPIO = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(BUTTON_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(LED_GPIO, GPIO.OUT)
 
 # Initialize pygame
 pygame.init()
@@ -58,6 +61,9 @@ fortune_card_title = None  # To store the card title
 meaning_text = None  # To store the card meaning
 fortune = None  # To store the fortune text
 
+led_blink_interval = 0.5
+last_blink_time = time.time()
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -99,6 +105,13 @@ while running:
         if current_time - fortune_start_time > fortune_duration:
             print('done telling fortune and restarting')
             fortune_start_time = None  # Reset and go back to the main screen
+
+    if fortune_start_time is None:
+        current_time = time.time()
+        if current_time - last_blink_time >= led_blink_interval:
+            # Toggle the LED state
+            GPIO.output(LED_GPIO, not GPIO.input(LED_GPIO))
+            last_blink_time = current_time
 
     # Update the display
     pygame.display.flip()
