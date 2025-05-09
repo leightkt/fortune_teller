@@ -84,7 +84,7 @@ while running:
     # Check if the button is pressed to show the fortune screen
     if GPIO.input(BUTTON_GPIO) == GPIO.LOW and fortune_start_time is None:
         time.sleep(0.2)
-        if GPIO.input(Button_GPIO) == GPIO.LOW:
+        if GPIO.input(BUTTON_GPIO) == GPIO.LOW:
             print('button pressed')
             fortune_start_time = pygame.time.get_ticks()
             print('telling fortune')
