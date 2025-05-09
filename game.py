@@ -1,7 +1,13 @@
 import pygame
+import RPi.GPIO as GPIO
 
 from utils import create_particles, draw_mist
 from fortune import tell_fortune, draw_card
+
+# Setup for GPIO button
+BUTTON_GPIO = 17
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(BUTTON_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Initialize pygame
 pygame.init()
@@ -74,9 +80,8 @@ while running:
     screen.blit(subtitle_text_line_1, (subtitle_text_line_1_x, subtitle_text_y))
     screen.blit(subtitle_text_line_2, (subtitle_text_line_2_x, subtitle_text_y + 150))
 
-    # Check if the spacebar is pressed to show the fortune screen
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_SPACE] and fortune_start_time is None:
+    # Check if the button is pressed to show the fortune screen
+    if GPIO.input(BUTTON_GPIO) == GPIO.LOW and fortune_start_time is None:
         fortune_start_time = pygame.time.get_ticks()  # Record the time when the fortune screen starts
         # Generate a random card and store it for later use
         fortune_card_image, fortune_card_title, meaning_text, fortune = draw_card()
