@@ -8,7 +8,7 @@ from fortune import tell_fortune, draw_card
 # Setup for GPIO button
 BUTTON_GPIO = 17
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(BUTTON_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(BUTTON_GPIO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Initialize pygame
 pygame.init()
@@ -104,7 +104,7 @@ while running:
             fortune_start_time = None  # Reset and go back to the main screen
 
     # Update the display
-    GPIO.cleanup()
     pygame.display.flip()
 
+GPIO.cleanup()
 pygame.quit()
