@@ -89,7 +89,6 @@ while running:
     # Check if the button is pressed to show the fortune screen
     if GPIO.input(BUTTON_GPIO) == GPIO.LOW and fortune_start_time is None:
         print('button pressed')
-        fortune_start_time = pygame.time.get_ticks()
         print('telling fortune')
         fortune_start_time = pygame.time.get_ticks()  # Record the time when the fortune screen starts
         # Generate a random card and store it for later use
@@ -97,6 +96,7 @@ while running:
 
     # If the fortune screen is active, display it for 10 seconds
     if fortune_start_time is not None:
+        GPIO.output(LED_GPIO, GPIO.LOW)
         # Show fortune screen with the saved card
         tell_fortune(fortune_card_image, fortune_card_title, meaning_text, fortune, screen, small_font, font, bg, dark_overlay)
 
