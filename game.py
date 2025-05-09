@@ -1,5 +1,4 @@
 import pygame
-import time
 import RPi.GPIO as GPIO
 
 from utils import create_particles, draw_mist
@@ -83,14 +82,12 @@ while running:
 
     # Check if the button is pressed to show the fortune screen
     if GPIO.input(BUTTON_GPIO) == GPIO.LOW and fortune_start_time is None:
-        time.sleep(0.2)
-        if GPIO.input(BUTTON_GPIO) == GPIO.LOW:
-            print('button pressed')
-            fortune_start_time = pygame.time.get_ticks()
-            print('telling fortune')
-            fortune_start_time = pygame.time.get_ticks()  # Record the time when the fortune screen starts
-            # Generate a random card and store it for later use
-            fortune_card_image, fortune_card_title, meaning_text, fortune = draw_card()
+        print('button pressed')
+        fortune_start_time = pygame.time.get_ticks()
+        print('telling fortune')
+        fortune_start_time = pygame.time.get_ticks()  # Record the time when the fortune screen starts
+        # Generate a random card and store it for later use
+        fortune_card_image, fortune_card_title, meaning_text, fortune = draw_card()
 
     # If the fortune screen is active, display it for 10 seconds
     if fortune_start_time is not None:
