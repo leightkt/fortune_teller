@@ -84,7 +84,7 @@ while running:
 
     # Draw subtitle at the bottom
     screen.blit(subtitle_text_line_1, (subtitle_text_line_1_x, subtitle_text_y))
-    screen.blit(subtitle_text_line_2, (subtitle_text_line_2_x, subtitle_text_y + 150))
+    screen.blit(subtitle_text_line_2, (subtitle_text_line_2_x, subtitle_text_y + 50))
 
     # Check if the button is pressed to show the fortune screen
     if GPIO.input(BUTTON_GPIO) == GPIO.LOW and fortune_start_time is None:
