@@ -38,8 +38,8 @@ crystal_y = (screen.get_height() - crystal_ball.get_height()) // 2
 
 # Load font and render text
 pygame.font.init()
-font = pygame.font.SysFont("papyrus", 128)  # Mystical font
-small_font = pygame.font.SysFont("papyrus", 66)  # Smaller font for card meanings
+font = pygame.font.SysFont("papyrus", 76)  # Mystical font
+small_font = pygame.font.SysFont("papyrus", 26)  # Smaller font for card meanings
 title_text = font.render("Hello Stranger", True, (255, 215, 0))  # Gold text
 subtitle_text_line_1 = font.render("Do you dare to", True, (255, 215, 0))
 subtitle_text_line_2 = font.render("have your fortune told?", True, (255, 215, 0))
