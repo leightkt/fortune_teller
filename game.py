@@ -49,7 +49,7 @@ text_x = (screen.get_width() - title_text.get_width()) // 2
 text_y = 100  # Higher in portrait mode
 subtitle_text_line_1_x = (screen.get_width() - subtitle_text_line_1.get_width()) // 2
 subtitle_text_line_2_x = (screen.get_width() - subtitle_text_line_2.get_width()) // 2
-subtitle_text_y = screen.get_height() - 200  # Near the bottom
+subtitle_text_y = screen.get_height() - 150  # Near the bottom
 
 mist_particles = create_particles(crystal_ball, crystal_x, crystal_y)
 
