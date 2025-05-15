@@ -14,8 +14,8 @@ GPIO.setup(LED_GPIO, GPIO.OUT)
 
 # Initialize pygame
 pygame.init()
-screen_width = 2160
-screen_height = 3840
+screen_width = 600
+screen_height = 1024
 screen = pygame.display.set_mode((screen_width, screen_height))  # Portrait mode
 running = True
 
