@@ -32,7 +32,7 @@ def tell_fortune(card_image, card_title, meaning_text, fortune, screen, small_fo
     
     # Center the card meaning text horizontally
     wrapped_card_meaning = wrap_text(meaning_text, small_font, screen.get_width() - 20)
-    meaning_y = card_y - card_title_text.get_height() - 35 # Adjust as needed
+    meaning_y = card_y - card_title_text.get_height() - 50 # Adjust as needed
     for line in wrapped_card_meaning:
         meaning_text_line = small_font.render(line, True, (255, 215, 0))
         meaning_x = (screen.get_width() - meaning_text_line.get_width()) // 2
