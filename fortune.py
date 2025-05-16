@@ -11,8 +11,7 @@ def draw_card():
     card_image_path = os.path.join(card_images_folder, card["image"])
     card_image = pygame.image.load(card_image_path)
     card_title = card["name"]
-    # meaning_text = card["meaning"]
-    meaning_text = "this is a really really long meaning for testing purposes you sexy sexy beast this is how we test some things now"
+    meaning_text = card["meaning"]
     fortune = card["fortune"]
     card_image = pygame.transform.scale(card_image, (450, 450))  # Adjust for portrait
     return card_image, card_title, meaning_text, fortune

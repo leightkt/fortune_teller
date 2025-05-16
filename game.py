@@ -14,9 +14,10 @@ GPIO.setup(LED_GPIO, GPIO.OUT)
 
 # Initialize pygame
 pygame.init()
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 screen_width = 600
 screen_height = 1024
-screen = pygame.display.set_mode((screen_width, screen_height))  # Portrait mode
+# screen = pygame.display.set_mode((screen_width, screen_height))  # Portrait mode
 running = True
 
 # Load and scale background image
@@ -88,8 +89,6 @@ while running:
 
     # Check if the button is pressed to show the fortune screen
     if GPIO.input(BUTTON_GPIO) == GPIO.LOW and fortune_start_time is None:
-        print('button pressed')
-        print('telling fortune')
         fortune_start_time = pygame.time.get_ticks()  # Record the time when the fortune screen starts
         # Generate a random card and store it for later use
         fortune_card_image, fortune_card_title, meaning_text, fortune = draw_card()
@@ -103,7 +102,6 @@ while running:
         # Check if 10 seconds have passed
         current_time = pygame.time.get_ticks()
         if current_time - fortune_start_time > fortune_duration:
-            print('done telling fortune and restarting')
             fortune_start_time = None  # Reset and go back to the main screen
 
     if fortune_start_time is None:
