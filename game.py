@@ -1,9 +1,8 @@
+import os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import pygame
 import time
 import RPi.GPIO as GPIO
-import os
-
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 from utils import create_particles, draw_mist
 from fortune import tell_fortune, draw_card
