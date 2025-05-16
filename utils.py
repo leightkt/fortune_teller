@@ -27,7 +27,7 @@ def create_particles(crystal_ball, crystal_x, crystal_y):
             "x": random.randint(crystal_x - 200, crystal_x + crystal_ball.get_width() + 200),
             "y": random.randint(crystal_y - 200, crystal_y + crystal_ball.get_height() + 200),
             "alpha": random.randint(50, 120),  # Optional: more ethereal
-            "radius": random.randint(5, 100),  # Medium-large size
+            "radius": random.randint(5, 50),  # Medium-large size
             "speed": random.uniform(0.5, 4.0),  # 💨 Faster mist
             "direction": random.uniform(0, 2 * math.pi)  # Drift direction
         })
