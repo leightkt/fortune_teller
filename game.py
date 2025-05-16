@@ -56,7 +56,7 @@ mist_particles = create_particles(crystal_ball, crystal_x, crystal_y)
 
 # Game logic
 fortune_start_time = None  # To track when the fortune screen is shown
-fortune_duration = 30000  # 30 seconds in milliseconds
+fortune_duration = 60000  # 60 seconds in milliseconds
 fortune_card_image = None  # To store the card image
 fortune_card_title = None  # To store the card title
 meaning_text = None  # To store the card meaning
