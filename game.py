@@ -16,6 +16,7 @@ GPIO.setup(LED_GPIO, GPIO.OUT)
 
 # Initialize pygame
 pygame.init()
+pygame.mouse.set_visible(False)
 screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 screen_width = 600
 screen_height = 1024
