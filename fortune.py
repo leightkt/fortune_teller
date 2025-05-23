@@ -39,11 +39,12 @@ def tell_fortune(card_image, card_title, meaning_text, fortune, screen, small_fo
         screen.blit(meaning_text_line, (meaning_x, meaning_y))
     
     # Wrap the fortune text
-    wrapped_fortune = wrap_text(fortune, small_font, screen.get_width() - 40)  # 40 is a padding from left and right
+    small_font_fortune = pygame.font.SysFont("papyrus", 36) 
+    wrapped_fortune = wrap_text(fortune, small_font_fortune, screen.get_width() - 40)  # 40 is a padding from left and right
     fortune_y = meaning_y + card_image.get_height() + 75  # Adjust as needed
 
     for line in wrapped_fortune:
-        fortune_text = small_font.render(line, True, (255, 215, 0))
+        fortune_text = small_font_fortune.render(line, True, (255, 215, 0))
         fortune_x = (screen.get_width() - fortune_text.get_width()) // 2
-        fortune_y += small_font.get_height() # Adjust line spacing
+        fortune_y += small_font_fortune.get_height() # Adjust line spacing
         screen.blit(fortune_text, (fortune_x, fortune_y))
