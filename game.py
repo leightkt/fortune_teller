@@ -99,11 +99,19 @@ while running:
     # If the fortune screen is active, display it for 10 seconds
     if fortune_start_time is not None:
         GPIO.output(LED_GPIO, GPIO.LOW)
+        current_time = pygame.time.get_ticks()
+        remaining_time = max(0, (fortune_duration - (current_time - fortune_start_time)) // 1000)
         # Show fortune screen with the saved card
         tell_fortune(fortune_card_image, fortune_card_title, meaning_text, fortune, screen, small_font, font, bg, dark_overlay)
 
-        # Check if 10 seconds have passed
-        current_time = pygame.time.get_ticks()
+        # Render countdown text
+        countdown_font = pygame.font.SysFont("papyrus", 36)
+        countdown_text = countdown_font.render(f"{remaining_time}", True, (255, 215, 0))  # Gold color
+        screen.blit(countdown_text, (
+            screen.get_width() - countdown_text.get_width() - 20,
+            screen.get_height() - countdown_text.get_height() - 20
+        ))
+        # Check if 30 seconds have passed
         if current_time - fortune_start_time > fortune_duration:
             fortune_start_time = None  # Reset and go back to the main screen
 
