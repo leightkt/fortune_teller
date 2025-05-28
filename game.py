@@ -1,5 +1,6 @@
 import os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
+import math
 import pygame
 import time
 import RPi.GPIO as GPIO
@@ -101,7 +102,7 @@ while running:
     if fortune_start_time is not None:
         GPIO.output(LED_GPIO, GPIO.LOW)
         current_time = pygame.time.get_ticks()
-        remaining_time = max(1, (fortune_duration - (current_time - fortune_start_time)) // 1000)
+        remaining_time = max(0, math.ceil((fortune_duration - (current_time - fortune_start_time)) / 1000))
         # Show fortune screen with the saved card
         tell_fortune(fortune_card_image, fortune_card_title, meaning_text, fortune, screen, small_font, font, bg, dark_overlay)
 
