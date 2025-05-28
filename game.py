@@ -42,9 +42,9 @@ crystal_y = (screen.get_height() - crystal_ball.get_height()) // 2
 
 # Load font and render text
 pygame.font.init()
-font = pygame.font.Font("fonts/UnifrakturMaguntia-Regular.ttf", 76)
-subtext_font = pygame.font.Font("fonts/UnifrakturMaguntia-Regular.ttf", 62)
-small_font = pygame.font.Font("fonts/UnifrakturMaguntia-Regular.ttf", 36)  # Smaller font for card meanings
+font = pygame.font.Font("fonts/UnifrakturCook-Bold.ttf", 76)
+subtext_font = pygame.font.Font("fonts/UnifrakturCook-Bold.ttf", 62)
+small_font = pygame.font.Font("fonts/UnifrakturCook-Bold.ttf", 36)  # Smaller font for card meanings
 title_text = font.render("Hello stranger", True, (255, 215, 0))  # Gold text
 subtitle_text_line_1 = subtext_font.render("Do you dare to", True, (255, 215, 0))
 subtitle_text_line_2 = subtext_font.render("have your fortune told?", True, (255, 215, 0))
@@ -106,7 +106,7 @@ while running:
         tell_fortune(fortune_card_image, fortune_card_title, meaning_text, fortune, screen, small_font, font, bg, dark_overlay)
 
         # Render countdown text
-        countdown_font = pygame.font.Font("fonts/UnifrakturMaguntia-Regular.ttf", 36)
+        countdown_font = pygame.font.Font("fonts/UnifrakturCook-Bold.ttf", 36)
         countdown_text = countdown_font.render(f"{remaining_time}", True, (255, 215, 0))  # Gold color
         screen.blit(countdown_text, (
             screen.get_width() - countdown_text.get_width() - 20,
