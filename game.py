@@ -110,7 +110,7 @@ while running:
         countdown_text = countdown_font.render(f"{remaining_time}", True, (255, 215, 0))  # Gold color
         screen.blit(countdown_text, (
             screen.get_width() - countdown_text.get_width() - 20,
-            screen.get_height() - countdown_text.get_height() - 20
+            20
         ))
         # Check if 30 seconds have passed
         if current_time - fortune_start_time > fortune_duration:
