@@ -107,10 +107,10 @@ while running:
         tell_fortune(fortune_card_image, fortune_card_title, meaning_text, fortune, screen, small_font, font, bg, dark_overlay)
 
         # Render countdown text
-        countdown_font = pygame.font.Font("fonts/UnifrakturCook-Bold.ttf", 42)
+        countdown_font = pygame.font.Font("fonts/UnifrakturCook-Bold.ttf", 48)
         countdown_text = countdown_font.render(f"{remaining_time}", True, (255, 215, 0))  # Gold color
         screen.blit(countdown_text, (
-            screen.get_width() - countdown_text.get_width() - 40,
+            screen.get_width() - countdown_text.get_width() - 50,
             20
         ))
         # Check if 30 seconds have passed
